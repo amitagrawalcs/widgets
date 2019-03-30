@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="CustomTextView">
+        <attr name="custom_font" format="string"/>
+        <attr name="corner_radius" format="dimension"/>
+        <attr name="background_color" format="color"/>
+        <attr name="border_width" format="dimension"/>
+        <attr name="border_color" format="color"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="CustomEditText">
+        <attr name="custom_font"/>
+        <attr name="numbers" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="VerticalBar">
+        <attr name="fill_color" format="color"/>
+    </declare-styleable>
+
     <declare-styleable name="CircularBar">
         <attr name="bar_color" format="color"/>
         <attr name="bar_width" format="dimension"/>
@@ -7,6 +25,14 @@
         <attr name="bar_percentage" format="float"/>
         <attr name="show" format="boolean"/>
         <attr name="bar_background_color" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="CustomRadioButton">
+        <attr name="custom_font"/>
+    </declare-styleable>
+
+    <declare-styleable name="CountryCodePicker">
+        <attr name="custom_font"/>
     </declare-styleable>
 
 </resources>
