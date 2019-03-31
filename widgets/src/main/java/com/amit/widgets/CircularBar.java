@@ -1,5 +1,7 @@
 package com.amit.widgets;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -24,6 +26,7 @@ public class CircularBar extends View {
     private Paint barPaint = new Paint();
     private Paint barBackgroundPaint = new Paint();
     private float value = 0;
+    private OnAnimationFinished onAnimationFinished;
 
 
     public CircularBar(Context context, AttributeSet attrs) {
@@ -68,6 +71,13 @@ public class CircularBar extends View {
                 invalidate();
             }
         });
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                if (onAnimationFinished!=null) onAnimationFinished.onFinished();
+            }
+        });
         animator.start();
     }
 
@@ -83,6 +93,10 @@ public class CircularBar extends View {
         show = true;
         if (animate) startAnimation();
         else invalidate();
+    }
+
+    public void setOnAnimationFinished(OnAnimationFinished onAnimationFinished){
+        this.onAnimationFinished = onAnimationFinished;
     }
 
     @Override
@@ -111,5 +125,9 @@ public class CircularBar extends View {
 
         if (show) show();
 
+    }
+
+    public static interface OnAnimationFinished{
+        public void onFinished();
     }
 }
